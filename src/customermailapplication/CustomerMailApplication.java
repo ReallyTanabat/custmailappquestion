@@ -17,18 +17,28 @@ public class CustomerMailApplication {
     /**
      * @param args the command line arguments
      */
-    private Customer customer;
+    private Customer customer,customer2,customer3;
     public void getCustomerTypeFromUser(String customerType) {
         switch(customerType) {
             case "Regular":
                 customer = new RegularCustomer();
                 break;
-            //complete MountainCustomer
-            //complete DelinquentCustomer 
+            case "Mountain":
+                customer2 = new MountainCustomer();
+                break;
+            case "Delinquent":
+                customer3 = new DelinquentCustomer();
+                break;
         }
     }
     public String generateMail() {
         return customer.createMail();
+    }
+    public String generateMail2() {
+        return customer2.createMail();
+    }
+    public String generateMail3() {
+        return customer3.createMail();
     }
     
     public static void main(String[] args) {
@@ -39,15 +49,18 @@ public class CustomerMailApplication {
         switch(type) {
             case 1:
                 app.getCustomerTypeFromUser("Regular");
+                System.out.println(app.generateMail());   
                 break;
             case 2:
                 app.getCustomerTypeFromUser("Mountain");
+                System.out.println(app.generateMail2());   
                 break;
             case 3:
                 app.getCustomerTypeFromUser("Delinquent");
+                System.out.println(app.generateMail3());   
                 break;
             
         }
-        System.out.println(app.generateMail());        
+              
     }
 }
